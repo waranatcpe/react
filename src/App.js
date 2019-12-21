@@ -1,35 +1,30 @@
-import React, { Component } from 'react'
-import { Route } from 'react-router-dom'
+import React, { Component } from "react";
+import { Route, Switch, BrowserRouter } from "react-router-dom";
 import "./App.css";
 
-//import function router
-import Register from './register'
+/* Import Views */
+import Home from "./views/home";
+import Register from "./views/register";
+import Login from "./views/login";
+import Error from "./views/error";
 
-//Router Component
+/* Router */
 class App extends Component {
   render() {
     return (
       <div className="App container">
-        <Route path="/" component={Home} />
-        <Route path="/register" component={Register} />
-        <Route path="/login" component={login} />
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/home" component={Home} />
+            <Route path="/register" component={Register} />
+            <Route path="/login" component={Login} />
+            <Route path="*" component={Error} />
+          </Switch>
+        </BrowserRouter>
       </div>
-    )
+    );
   }
 }
-
-function Home(){
-  return(
-    <div></div>
-  )
-}
-
-function login(){
-  return(
-    <h1>Login Page</h1>
-  )
-}
-
-
 
 export default App;
